@@ -2,34 +2,43 @@ pipeline {
     agent any
 
     stages {
-        stage('Fetching the code from GitHub') {
+        stage('First Stage') {
             steps {
-                git branch: 'main', url: 'https://github.com/PoojaP9606/maven.git'
+   
+                git branch: 'name', url: 'https://github.com/PoojaP9606/maven.git'
             }
         }
 
-        stage('Maven Build') {
+        stage('Second Stage') {
             steps {
-                echo 'Jenkins pipeline - Maven build stage'
-               
-            }
-        }
-
-        stage('Testing Stage') {
-            steps {
-                echo 'It is a testing stage'
              
+                build  'maven_free'
             }
         }
 
-        stage('Deploy Stage') {
+        stage('Third Stage') {
             steps {
-                echo 'It is deploy stage'
- 
+                echo 'Testing phase'
+            }
+        }
+
+        stage('Fourth Stage') {
+            steps {
+                echo 'Deploy stage'
             }
         }
     }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
 }
+
 
 
 
