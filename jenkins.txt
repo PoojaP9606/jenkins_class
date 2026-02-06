@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Fetching the code from GitHub') {
+            steps {
+                git branch: 'main', url: 'https://github.com/PoojaP9606/maven.git'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                echo 'Jenkins pipeline - Maven build stage'
+               
+            }
+        }
+
+        stage('Testing Stage') {
+            steps {
+                echo 'It is a testing stage'
+             
+            }
+        }
+
+        stage('Deploy Stage') {
+            steps {
+                echo 'It is deploy stage'
+ 
+            }
+        }
+    }
+}
+
+
+
